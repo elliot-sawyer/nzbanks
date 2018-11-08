@@ -1,0 +1,27 @@
+{
+    "name": "cryptopay/nzbanks",
+    "type": "silverstripe-vendormodule",
+    "description": "Database of active New Zealand banks, maintained with a user task",
+    "homepage": "http://silverstripe.org",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "silverstripe",
+        "new zealand",
+        "nz",
+        "bank",
+        "lookup"
+    ],
+    "authors": [
+        {
+            "name": "elliot sawyer",
+            "email": "elliot@cryptopay.nz"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4"
+    },
+    "suggest": {
+        "silverstripe/cms": "Allows you to easily edit file permissions in the CMS"
+    },
+    "extra": []
+}

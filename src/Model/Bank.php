@@ -1,6 +1,7 @@
 <?php
 namespace CryptoPay\NZBanks;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Permission;
 
 /**
  * Bank model - describes a Bank from data obtained from PaymentsNZ
@@ -112,4 +113,11 @@ class Bank extends DataObject
 
         return null;
     }
+
+    public function canView($member = null, $context = []) {return true;}
+    public function canEdit($member = null, $context = []) {return Permission::check('ADMIN');}
+    public function canDelete($member = null, $context = []) {return false;}
+    public function canCreate($member = null, $context = []) {return Permission::check('ADMIN');}
+
+
 }

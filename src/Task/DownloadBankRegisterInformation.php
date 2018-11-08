@@ -36,9 +36,7 @@ class DownloadBankRegisterInformation extends BuildTask
     /**
      * Download the register of banks from Payments NZ
      *
-     * The text is not returned; rather it is set as a local variable
-     * for further processing
-     * @return void
+     * @return string txt file representing the bank branch register
      */
     private function downloadTextFromPaymentsNZ()
     {
@@ -47,6 +45,7 @@ class DownloadBankRegisterInformation extends BuildTask
         $response = $client->request('GET', $this->config()->bank_register_source);
         $txt = (string) $response->getBody();
         $this->bankRegisterSource = $txt;
+        return $this->bankRegisterSource;
     }
 
     /**

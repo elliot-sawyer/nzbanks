@@ -91,12 +91,14 @@ class Bank extends DataObject
 
     /*
     * "Prettify" the bank account information prior to displaying it
-    * @return String: A normalized bank account number in the following format:
+    *
+    * @todo move this to NZBankACcount
+    * @return string normalized bank account number in the following format:
     *         BankNumber-BranchNumber-Account-Suffix
     *         - OR -
     *         null if bank cannot be identified
     *
-     */
+    */
     public static function prettify($accountNumber)
     {
 

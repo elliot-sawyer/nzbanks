@@ -1,5 +1,5 @@
 <?php
-
+namespace CryptoPay\NZBanks;
 use SilverStripe\ORM\DataObject;
 use NeilNZ\NZBankAccountValidation\Validator;
 use CryptoPay\NZBanks\Bank;

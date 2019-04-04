@@ -89,7 +89,7 @@ class NZBankAccount extends DataObject
     /**
      * Validate the bank account number
      */
-    private function validateAccountNumber()
+    public function validateAccountNumber()
     {
         $accountNumber = $this->AccountNumber;
         list($bank, $branch, $account, $suffix) = explode('-', $accountNumber);

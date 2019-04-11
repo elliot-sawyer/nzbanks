@@ -151,7 +151,7 @@ class NZBankAccount extends DataObject
         $cents = (int) $cents;
         $dollars = $cents / 100.00;
 
-        return round($dollars, 2);
+        return number_format(round($dollars, 2), 2);
     }
 
     /**

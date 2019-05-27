@@ -142,16 +142,14 @@ class NZBankAccount extends DataObject
 
     /**
      * Convert New Zealand cents into dollars
-     * @todo this probably needs bcdiv
      * @param int cents
      * @return float dollars
      */
     public static function cents_to_dollars($cents)
     {
         $cents = (int) $cents;
-        $dollars = $cents / 100.00;
-
-        return number_format(round($dollars, 2), 2);
+        $dollars = bcdiv($cents, 100, 2);
+        return $dollars;
     }
 
     /**

@@ -93,6 +93,7 @@ class DownloadBankRegisterInformation extends BuildTask
         //get the existing banks
         $existingBanks = Bank::get()->Sort(['BankNumber ASC', 'BranchNumber ASC'])->map('Prefix', 'ID')->toArray();
         $count = 0;
+        $failed = 0;
 
         //break the file into rows
         $contents = explode("\n", $this->bankRegisterSource);
@@ -127,9 +128,11 @@ class DownloadBankRegisterInformation extends BuildTask
                 $bank = Bank::create($bankDetails);
                 $bank->write();
                 $count++;
+            } else {
+                $failed++;
             }
         }
 
-        DB::alteration_message($count." records written");
+        DB::alteration_message($count." records written, ".$failed." records skipped");
     }
 }

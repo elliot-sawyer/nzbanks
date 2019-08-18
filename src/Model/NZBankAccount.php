@@ -9,6 +9,7 @@ use CryptoPay\NZBanks\Bank;
  */
 class NZBankAccount extends DataObject
 {
+    private static $table_name = 'NZBankAccount';
     private static $singular_name = 'Bank Account';
     private static $plural_name = 'Bank Accounts';
 
@@ -46,6 +47,16 @@ class NZBankAccount extends DataObject
         'Bank.BranchInformation' => 'Branch',
         'Bank.City' => 'City'
     ];
+
+    /**
+     * Display the bank account number instead of the record ID
+     *
+     * @return void
+     */
+    public function getTitle()
+    {
+        return $this->AccountNumber;
+    }
 
     /**
      * CMS Fields

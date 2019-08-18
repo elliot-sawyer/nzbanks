@@ -11,6 +11,7 @@ use SilverStripe\Security\Permission;
 
 class Bank extends DataObject
 {
+    private static $table_name = 'Bank';
     private static $indexes = array(
         'BankNumber' => true,
         'BranchNumber' => true
@@ -92,7 +93,7 @@ class Bank extends DataObject
     /*
     * "Prettify" the bank account information prior to displaying it
     *
-    * @todo move this to NZBankACcount
+    * @todo move this to NZBankAccount
     * @return string normalized bank account number in the following format:
     *         BankNumber-BranchNumber-Account-Suffix
     *         - OR -

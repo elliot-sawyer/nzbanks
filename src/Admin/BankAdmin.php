@@ -7,7 +7,8 @@ use SilverStripe\Admin\ModelAdmin;
 class BankAdmin extends ModelAdmin
 {
     private static $managed_models = [
-        Bank::class
+        Bank::class,
+        NZBankAccount::class
     ];
 
     private static $menu_title = 'Banks';

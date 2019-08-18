@@ -19,7 +19,11 @@ CryptoPay\NZBanks\DownloadBankRegisterInformation:
     NZBankAccount::dollars_to_cents(1.234); //1234
     NZBankAccount::cents_to_dollars(1234) //12.34
     Bank::identify('12-3141-0000456-001') // ASB Bank, Willis Street (Bank dataobject)
-    Bank::prettify('1-2-3-4') //0001-0002-00000003-0004
+    NZBankAccount::prettify('1-2-3-4') //0001-0002-00000003-0004
+    NZBankAccount::prettify('1-2-3-4', ' ') //0001 0002 00000003 0004
+    NZBankAccount::prettify('1-2-3-4', '.') //0001.0002.00000003.0004
+    
+    
 ```
 
 ## copyright

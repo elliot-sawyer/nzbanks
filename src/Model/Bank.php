@@ -90,33 +90,6 @@ class Bank extends DataObject
         return ($bank && $bank->ID) ? $bank : false;
     }
 
-    /*
-    * "Prettify" the bank account information prior to displaying it
-    *
-    * @todo move this to NZBankAccount
-    * @return string normalized bank account number in the following format:
-    *         BankNumber-BranchNumber-Account-Suffix
-    *         - OR -
-    *         null if bank cannot be identified
-    *
-    */
-    public static function prettify($accountNumber)
-    {
-
-        $parts = preg_split('/[^0-9]/', $accountNumber);
-        if (count($parts) === 4) {
-            //IRD requires components to be zero-padded on left to max length
-            $bankID = str_pad($parts[0], 2, '0', STR_PAD_LEFT);
-            $bankBranch = str_pad($parts[1], 4, '0', STR_PAD_LEFT);
-            $bankAccount = str_pad($parts[2], 8, '0', STR_PAD_LEFT);
-            $bankSuffix  = str_pad($parts[3], 4, '0', STR_PAD_LEFT);
-
-            return sprintf("%s-%s-%s-%s", $bankID, $bankBranch, $bankAccount, $bankSuffix);
-        }
-
-        return null;
-    }
-
     public function canView($member = null, $context = []) {return true;}
     public function canEdit($member = null, $context = []) {return Permission::check('ADMIN');}
     public function canDelete($member = null, $context = []) {return false;}

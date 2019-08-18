@@ -78,7 +78,7 @@ class NZBankAccount extends DataObject
     {
         $valid = parent::validate();
 
-        $accountNumber = Bank::prettify($this->AccountNumber);
+        $accountNumber = NZBankAccount::prettify($this->AccountNumber);
         $bank = Bank::identify($accountNumber);
 
         if (!$accountNumber) {
@@ -127,7 +127,7 @@ class NZBankAccount extends DataObject
     {
         parent::onBeforeWrite();
         if ($this->AccountNumber) {
-            $accountNumber = Bank::prettify($this->AccountNumber);
+            $accountNumber = NZBankAccount::prettify($this->AccountNumber);
             $bank = Bank::identify($accountNumber);
 
             if ($bank && $bank->ID) {
@@ -164,6 +164,32 @@ class NZBankAccount extends DataObject
     }
 
     /**
+    * "Prettify" the bank account information prior to displaying it
+    *
+    * @return string normalized bank account number in the following format:
+    *         BankNumber-BranchNumber-Account-Suffix
+    *         - OR -
+    *         null if bank cannot be identified
+    *
+    */
+    public static function prettify($accountNumber, $delimiter = '-')
+    {
+
+        $parts = preg_split('/[^0-9]/', $accountNumber);
+        if (count($parts) === 4) {
+            //IRD requires components to be zero-padded on left to max length
+            $bankID = str_pad($parts[0], 2, '0', STR_PAD_LEFT);
+            $bankBranch = str_pad($parts[1], 4, '0', STR_PAD_LEFT);
+            $bankAccount = str_pad($parts[2], 8, '0', STR_PAD_LEFT);
+            $bankSuffix  = str_pad($parts[3], 4, '0', STR_PAD_LEFT);
+
+            return sprintf("%s$delimiter%s$delimiter%s$delimiter%s", $bankID, $bankBranch, $bankAccount, $bankSuffix);
+        }
+
+        return null;
+    }
+
+    /**
      * Here we find an existing bank account, or create a new one for identification
      * Bank accounts are not currently assigned to members, but will be if internal payments are ever allowed
      * This method is to check that more than one account is not being used unless necessary
@@ -174,7 +200,7 @@ class NZBankAccount extends DataObject
      */
     public static function find_or_make($accountNumber)
     {
-        $account = Bank::prettify($accountNumber);
+        $account = NZBankAccount::prettify($accountNumber);
         $bankAccount = NZBankAccount::get()->find('AccountNumber', $account);
         if (!($bankAccount && $bankAccount->ID)) {
             $bankAccount = NZBankAccount::create();

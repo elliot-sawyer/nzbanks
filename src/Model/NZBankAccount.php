@@ -21,7 +21,7 @@ class NZBankAccount extends DataObject
      *       Account base number (maximum 8 digits)
      *       Account suffix (maximum 4 digits).
      * - More info:
-     * - https://www.ird.govt.nz/resources/f/7/f774fdc2-e762-4979-b819-59f4b6d745f2/nrwt-rwt-specification-document-31032018v1.pdf
+     * - https://www.ird.govt.nz/-/media/Project/IR/PDF/2020RWTNRWTSpecificationDocumentv10.pdf
      * - See "Bank account number validation"
      *
      *

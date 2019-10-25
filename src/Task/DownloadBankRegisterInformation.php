@@ -42,7 +42,9 @@ class DownloadBankRegisterInformation extends BuildTask
     {
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $this->config()->bank_register_source);
+        $response = $client->request('GET', $this->config()->bank_register_source, [
+            'decode_content' => false
+        ]);
         $txt = (string) $response->getBody();
         $this->bankRegisterSource = $txt;
         return $this->bankRegisterSource;

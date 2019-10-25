@@ -1,5 +1,5 @@
 {
-    "name": "cryptopay/nzbanks",
+    "name": "elliotsawyer/nzbanks",
     "type": "silverstripe-vendormodule",
     "description": "Database of active New Zealand banks, maintained with a user task",
     "homepage": "http://silverstripe.org",
@@ -13,8 +13,7 @@
     ],
     "authors": [
         {
-            "name": "elliot sawyer",
-            "email": "elliot@cryptopay.nz"
+            "name": "elliot sawyer"
         }
     ],
     "require": {

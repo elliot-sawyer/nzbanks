@@ -10,7 +10,7 @@ SilverStripe module for managing a dataset of active New Zealand banks. This als
 ## Configuration
 Only the download URL can be changed. This is incredibly unlikely, but possible because PaymentsNZ has updated the URL more than once without notice.
 ```yml
-ElliotSawyer\NZBanks\DownloadBankRegisterInformation:
+CryptoPay\NZBanks\DownloadBankRegisterInformation:
   bank_register_source: https://payments.nz/path/to/register
 ```
 

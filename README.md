@@ -3,14 +3,14 @@ SilverStripe module for managing a dataset of active New Zealand banks. This als
 
 ## Installation
 1. add the repository to your composer.json. This is a private repo, so composer will not find it on packagist
-2. `composer require cryptopay/nzbanks`
+2. `composer require elliotsawyer/nzbanks`
 3. Run `vendor/bin/sake dev/build flush=`
 4. Populate the database with bank branches: `vendor/bin/sake dev/tasks/download-bank-register-information flush=`. Do this on the CLI because it will likely exceed PHP's default execution time.
 
 ## Configuration
 Only the download URL can be changed. This is incredibly unlikely, but possible because PaymentsNZ has updated the URL more than once without notice.
 ```yml
-CryptoPay\NZBanks\DownloadBankRegisterInformation:
+ElliotSawyer\NZBanks\DownloadBankRegisterInformation:
   bank_register_source: https://payments.nz/path/to/register
 ```
 
